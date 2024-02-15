@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./index.css";
 
 class Customers extends Component {
     state = {
@@ -13,8 +14,8 @@ class Customers extends Component {
             },
             {
                 id: 2,
-                name: "ajith",
-                phone: "9820149090",
+                name: "Sujith",
+                // phone: "9820149090",
                 address: { city: "Bangalore" },
             },
             { id: 3, name: "mahesh", phone: "889000921", address: { city: "London" } },
@@ -41,11 +42,17 @@ class Customers extends Component {
                     </thead>
                     <tbody>
                         {this.state.customers.map((cust) => {
-                            return(
+                            return (
                                 <tr key={cust.id}>
                                     <td>{cust.id}</td>
-                                    <td>{cust.name}</td>
-                                    <td>{cust.phone}</td>
+                                    <td className={this.customersNameStyle(cust.name)}>{cust.name}</td>
+                                    <td>{
+                                        cust.phone ? cust.phone : (
+                                            <div className="bg-warning p-1 text-center">
+                                                Not Available
+                                            </div>
+                                        )
+                                    }</td>
                                     <td>{cust.address.city}</td>
                                 </tr>
                             );
@@ -57,7 +64,13 @@ class Customers extends Component {
     }
     ChangeCount = () => {
         this.setState({ count: 100 });
-    }
+    };
+    customersNameStyle = (custName) => {
+        if (custName.startsWith("S")) return "green-highlight border-left";
+        else if (custName.startsWith("J")) return "red-highlight border-right";
+        else return "";
+        };
+       
 }
 
 

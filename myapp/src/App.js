@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavBar from './NavBar';
 import "bootstrap/dist/css/bootstrap.css";
 import Customers from './Customers';
+import ProductsList from './ProductsList';
 
 
 class App extends Component {
@@ -9,7 +10,8 @@ class App extends Component {
     return (
       <div>
        <NavBar></NavBar>
-       <Customers></Customers>
+       {/* <Customers></Customers> */}
+       <ProductsList></ProductsList>
       </div>
     );
   }
