@@ -1,0 +1,19 @@
+.demo > div{
+    float: left;
+    width: 30%;
+    padding: 100px 0;
+}
+.demo a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.5rem;
+}
+.demo1 > div{
+    float: left;
+    width: 50%;
+    padding: 100px 0;
+}
+.rahul_ph{
+    float: right;
+    height: 250px;
+}
