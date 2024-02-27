@@ -49,32 +49,32 @@ class Register extends Component {
                         </label>
                         <input type="Text"
                             class="form-control"
-                            id="lname"
-                            aria-describedby="lnamelHelp" 
+                            id="E_mail"
+                            aria-describedby="E_mailHelp"
                             value={this.state.E_mail}
                             onChange={(event) => {
-                                this.setState({ Email: event.target.value })
-                            }}/>
+                                this.setState({ E_mail: event.target.value })
+                            }} />
                         <label for="lname"
                             class="form-label">
                             PhoneNumber:-
                         </label>
-                        <input type="Text"
+                        <input type="number"
                             class="form-control"
-                            id="lname"
+                            id="Phone"
                             aria-describedby="lnamelHelp"
-                            value={this.state.phonenumber}
+                            value={this.state.Phone}
                             onChange={(event) => {
-                                this.setState({ phonenumber: event.target.value })
+                                this.setState({ Phone: event.target.value })
                             }} />
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">NEWPassword</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" 
-                         value={this.state.NewPassword}
-                         onChange={(event) => {
-                             this.setState({ Newpassword: event.target.value })
-                          }}/>
+                        <input type="password" class="form-control" id="pwd" 
+                        value={this.state.NewPassword}
+                        onChange={(event) => {
+                            this.setState({ NewPassword: event.target.value })
+                         }} />
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">CorrectPassword</label>
@@ -84,11 +84,27 @@ class Register extends Component {
                             this.setState({ correctPassword: event.target.value })
                          }} />
                     </div>
-                    <button type="submit" class="btn btn-primary"   >Submit</button>
+                    <button type="submit" class="btn btn-primary" onClick={this.onSubmitClick}  >Submit</button>
                 </form>
 
             </div>
         );
+    }
+    onSubmitClick = async(event) => {
+        event.preventDefault();
+
+        var customer = {
+            Fname:this.state.Fname,
+            Lname:this.state.Lname,
+            E_mail:this.state.E_mail,
+            Phone:this.state.Phone,
+            NewPassword:this.state.NewPassword,
+            correctPassword:this.state.correctPassword,
+        };
+        var response = await fetch("http://localhost:5000/Users",
+                                    {method : "POST",
+                                body : JSON.stringify(customer),
+                            headers: {"content-type": "application/json"}});
     }
 }
 

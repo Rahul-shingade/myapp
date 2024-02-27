@@ -28,7 +28,7 @@ class Login extends Component {
                     </div>
                     <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="text"
+                        <input type="password"
                             class="form-control"
                             id="pwd"
                             value={this.state.password}
